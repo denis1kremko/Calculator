@@ -1,6 +1,7 @@
 #include <iostream>
 
 int main() {
-    std::cout << "Fuck off!" << std::endl;
+    int i = 0;
+    std::cout <<  7 * i * 98 << "\n";
     return 0;
 }
