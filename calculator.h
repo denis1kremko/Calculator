@@ -85,11 +85,11 @@ public:
         operation_ = operation;
     }
 
-    void SetLHS(std::unique_ptr<Expression> lhs) {
+    void SetLHS(std::unique_ptr <Expression> lhs) {
         lhs_ = std::unique_ptr<Expression>(std::move(lhs));
     }
 
-    void SetRHS(std::unique_ptr<Expression> rhs) {
+    void SetRHS(std::unique_ptr <Expression> rhs) {
         rhs_ = std::unique_ptr<Expression>(std::move(rhs));
     }
 
@@ -111,12 +111,12 @@ public:
 
 private:
     char operation_;
-    std::unique_ptr<Expression> lhs_, rhs_;
+    std::unique_ptr <Expression> lhs_, rhs_;
 };
 
-std::unique_ptr<Expression> ParseExpression(Tokenizer *tok);
+std::unique_ptr <Expression> ParseExpression(Tokenizer *tok);
 
-std::unique_ptr<Expression> ParseUnit(Tokenizer *tok) {
+std::unique_ptr <Expression> ParseUnit(Tokenizer *tok) {
     // поглощаем число или скобку
     tok->Consume();
     // левая часть выражения
@@ -145,7 +145,7 @@ std::unique_ptr<Expression> ParseUnit(Tokenizer *tok) {
     return unit;
 }
 
-std::unique_ptr<Expression> ParseTerm(Tokenizer *tok) {
+std::unique_ptr <Expression> ParseTerm(Tokenizer *tok) {
     auto term_expr = std::make_unique<Operation>(Operation());
     term_expr->SetLHS(ParseUnit(tok));
 
@@ -163,7 +163,7 @@ std::unique_ptr<Expression> ParseTerm(Tokenizer *tok) {
     return term_expr;
 }
 
-std::unique_ptr<Expression> ParseExpression(Tokenizer *tok) {
+std::unique_ptr <Expression> ParseExpression(Tokenizer *tok) {
     auto main_expr = std::make_unique<Operation>(Operation());
     main_expr->SetLHS(ParseTerm(tok));
 
